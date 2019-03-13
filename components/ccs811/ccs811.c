@@ -344,8 +344,8 @@ bool ccs811_set_environmental_data (ccs811_sensor_t* dev,
     uint16_t hum  = humidity * 512;
 
     // fill environmental data
-    uint8_t data[4]  = { temp >> 8, temp & 0xff,
-                         hum  >> 8, hum  & 0xff  };
+    uint8_t data[4]  = { hum  >> 8, hum  & 0xff,
+                         temp >> 8, temp & 0xff };
 
     // send environmental data to the sensor
     if (!ccs811_reg_write(dev, CCS811_REG_ENV_DATA, data, 4))
